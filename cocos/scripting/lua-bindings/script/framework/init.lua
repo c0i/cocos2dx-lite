@@ -31,13 +31,13 @@ printInfo("#")
 
 device     = require("cocos.framework.device")
 display    = require("cocos.framework.display")
-audio      = require("cocos.framework.audio")
+-- audio      = require("cocos.framework.audio")
 transition = require("cocos.framework.transition")
 
 require("cocos.framework.extends.NodeEx")
 require("cocos.framework.extends.SpriteEx")
 require("cocos.framework.extends.LayerEx")
-require("cocos.framework.extends.MenuEx")
+-- require("cocos.framework.extends.MenuEx")
 
 if ccui then
 require("cocos.framework.extends.UIWidget")

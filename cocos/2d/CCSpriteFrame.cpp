@@ -207,11 +207,11 @@ Texture2D* SpriteFrame::getTexture()
     }
 
     if( !_textureFilename.empty()) {
-        _texture = Director::getInstance()->getTextureCache()->addImage(_textureFilename);
-        return _texture;
+        auto texture = Director::getInstance()->getTextureCache()->addImage(_textureFilename);
+        setTexture(texture);
     }
     // no texture or texture filename
-    return nullptr;
+    return _texture;
 }
 
 void SpriteFrame::setPolygonInfo(const PolygonInfo &polygonInfo)

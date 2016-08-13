@@ -166,6 +166,7 @@
     <ClCompile Include="..\..\..\..\external\lua\cjson\strbuf.c">
       <Filter>cjson</Filter>
     </ClCompile>
+    <ClCompile Include="..\manual\lua_module_register.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\auto\lua_cocos2dx_auto.hpp">
@@ -304,5 +305,7 @@
     <ClInclude Include="..\..\..\..\external\lua\cjson\strbuf.h">
       <Filter>cjson</Filter>
     </ClInclude>
+    <ClInclude Include="..\manual\lua_module_register.h" />
+    <ClInclude Include="..\manual\Lua-BindingsExport.h" />
   </ItemGroup>
 </Project>

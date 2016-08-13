@@ -20,6 +20,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 
+# LOCAL_SRC_FILES += hello.cpp
 # _COCOS_HEADER_ANDROID_BEGIN
 # _COCOS_HEADER_ANDROID_END
 

@@ -56,7 +56,8 @@ LOCAL_SRC_FILES := ../manual/CCLuaBridge.cpp \
           ../../../../external/xxtea/xxtea.cpp \
           ../../../../external/lua/lua_extensions.c \
           ../auto/lua_cocos2dx_audioengine_auto.cpp \
-          ../manual/audioengine/lua_cocos2dx_audioengine_manual.cpp
+          ../manual/audioengine/lua_cocos2dx_audioengine_manual.cpp \
+          ../manual/lua_module_register.cpp
 
 # cjson
 LOCAL_CJSON_SRC_FILES := ../../../../external/lua/cjson/fpconv.c \

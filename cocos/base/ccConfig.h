@@ -397,6 +397,14 @@ THE SOFTWARE.
 #define CC_FILEUTILS_APPLE_ENABLE_OBJC  1
 #endif
 
+/** @def CC_ENABLE_PREMULTIPLIED_ALPHA
+ * If enabled, all textures will be preprocessed to multiply its rgb components
+ * by its alpha component.
+ */
+#ifndef CC_ENABLE_PREMULTIPLIED_ALPHA
+# define CC_ENABLE_PREMULTIPLIED_ALPHA 1
+#endif
+
 #include "ccConfigUser.h"
 
 #endif // __CCCONFIG_H__

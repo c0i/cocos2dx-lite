@@ -113,6 +113,7 @@ CCFileUtils.purgeFileUtils = CCFileUtilsDeprecated.purgeFileUtils
 --functions of CCFileUtils will be deprecated end
 
 --functions of CCMenu will be deprecated begin
+if CCMenu then
 local CCMenuDeprecated = { }
 function CCMenuDeprecated.createWithItem(self,...)
     deprecatedTip("CCMenuDeprecated:createWithItem","cc.Menu:createWithItem")
@@ -124,6 +125,7 @@ function CCMenuDeprecated.setHandlerPriority(self)
     print("\n********** \n".."setHandlerPriority was deprecated in 3.0. \n**********")
 end
 CCMenu.setHandlerPriority = CCMenuDeprecated.setHandlerPriority
+end
 --functions of CCMenu will be deprecated end
 
 --functions of CCNode will be deprecated begin
@@ -788,6 +790,7 @@ CCTimer.numberOfRunningActionsInTarget = CCTimerDeprecated.numberOfRunningAction
 
 
 --functions of CCMenuItemFont will be deprecated begin
+if CCMenuItemFont then
 local CCMenuItemFontDeprecated = { }
 function CCMenuItemFontDeprecated.fontSize()
     deprecatedTip("CCMenuItemFont:fontSize","CCMenuItemFont:getFontSize")
@@ -812,19 +815,23 @@ function CCMenuItemFontDeprecated.fontNameObj(self)
     return self:getFontNameObj()
 end
 CCMenuItemFont.fontNameObj = CCMenuItemFontDeprecated.fontNameObj
+end
 --functions of CCMenuItemFont will be deprecated end
 
 
 --functions of CCMenuItemToggle will be deprecated begin
+if CCMenuItemToggle then
 local CCMenuItemToggleDeprecated = { }
 function CCMenuItemToggleDeprecated.selectedItem(self)
     deprecatedTip("CCMenuItemToggle:selectedItem","CCMenuItemToggle:getSelectedItem")
     return self:getSelectedItem()
 end
 CCMenuItemToggle.selectedItem = CCMenuItemToggleDeprecated.selectedItem
+end
 --functions of CCMenuItemToggle will be deprecated end
 
 
+if CCTileMapAtlas then
 --functions of CCTileMapAtlas will be deprecated begin
 local CCTileMapAtlasDeprecated = { }
 function CCTileMapAtlasDeprecated.tileAt(self,pos)
@@ -926,6 +933,8 @@ function CCTMXObjectGroupDeprecated.objectNamed(self, objectName)
 end
 CCTMXObjectGroup.objectNamed = CCTMXObjectGroupDeprecated.objectNamed
 --functions of CCTMXObject will be deprecated end
+
+end -- TMX module
 
 --functions of CCRenderTexture will be deprecated begin
 local CCRenderTextureDeprecated = { }

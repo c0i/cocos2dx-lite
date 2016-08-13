@@ -497,7 +497,7 @@ cc.KeyCode.KEY_LEFT_ALT   = cc.KeyCode.KEY_ALT
 
 cc.EventAssetsManagerEx =
 {
-    EventCode = 
+    EventCode =
     {
         ERROR_NO_LOCAL_MANIFEST = 0,
         ERROR_DOWNLOAD_MANIFEST = 1,
@@ -552,13 +552,15 @@ cc.CameraFlag =
     USER8 = 256,
 }
 
-cc.CameraBackgroundBrush.BrushType = 
+if cc.CameraBackgroundBrush then
+cc.CameraBackgroundBrush.BrushType =
 {
     NONE = 0,
     DEPTH = 1,
     COLOR = 2,
     SKYBOX = 3,
 }
+end
 
 cc.BillBoard_Mode =
 {
@@ -593,7 +595,7 @@ cc.MATRIX_STACK_TYPE =
     TEXTURE = 2,
 }
 
-cc.LightType = 
+cc.LightType =
 {
     DIRECTIONAL = 0,
     POINT = 1,
@@ -601,7 +603,7 @@ cc.LightType =
     AMBIENT = 3,
 }
 
-cc.LightFlag = 
+cc.LightFlag =
 {
     LIGHT0  = math.pow(2,0),
     LIGHT1  = math.pow(2,1),
@@ -626,7 +628,7 @@ cc.AsyncTaskPool.TaskType =
     TASK_IO = 0,
     TASK_NETWORK = 1,
     TASK_OTHER = 2,
-    TASK_MAX_TYPE = 3,  
+    TASK_MAX_TYPE = 3,
 }
 
 

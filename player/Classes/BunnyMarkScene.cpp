@@ -66,7 +66,7 @@ void BunnyMarkScene::onEnter()
         moreBunnies(100);
     };
 
-    getEventDispatcher()->addEventListenerWithFixedPriority(listener, 1);
+    getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 
     scheduleUpdate();
 }

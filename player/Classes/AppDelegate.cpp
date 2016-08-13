@@ -1,8 +1,9 @@
 ﻿#include "AppDelegate.h"
 #include "scripting/lua-bindings/manual/CCLuaEngine.h"
+#include "scripting/lua-bindings/manual/lua_module_register.h"
 // #include "SimpleAudioEngine.h"
 #include "cocos2d.h"
- #include "lua_module_register.h"
+
 #include "ProjectConfig/SimulatorConfig.h"
 
 #include "MainScene.h"
@@ -53,7 +54,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     director->getOpenGLView()->setDesignResolutionSize(640, 960, ResolutionPolicy::FIXED_WIDTH);
 
     // turn on display FPS
-    director->setDisplayStats(false);
+    director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd && echo x)"
+cd $DIR
+python genbindings.py

@@ -3,7 +3,7 @@ cocos2dx-lite
 =========
 
 It bases on [cocos2d-x](https://github.com/cocos2d/cocos2d-x) v3 branch, but remove 3D and other features.
-It works on iOS, Android, OS X and ~~Windows~~.
+It works on iOS, Android, OS X and Windows.
 
 The major change:
 
@@ -22,6 +22,7 @@ The major change:
 - Remove *Menu*
 - Remove `Focus` event
 - Improve module compile `cocos/base/ccConfigUser.h`
+- Improve curl library, only support `socket` and `http` protocol
 - Add [CC_MINI_2D / CC_USE_FREETYPE / CC_ONLY_PNG](https://github.com/c0i/cocos2dx-lite/blob/master/cocos/base/ccConfigUser.h)
 - Add CC_USE_SPINE
 - Add CC_USE_AUDIO_ENGINE

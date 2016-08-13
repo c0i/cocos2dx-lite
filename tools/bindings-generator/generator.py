@@ -983,13 +983,14 @@ class Generator(object):
             cindex.Config.set_library_path(libclang_dylib_dir)
         self.index = cindex.Index.create()
         self.outdir = opts['outdir']
+        self.search_path = opts['search_path']
         self.prefix = opts['prefix']
-        self.headers = opts['headers'].split(' ')
+        self.headers = opts['headers'].split()
         self.classes = opts['classes']
         self.classes_need_extend = opts['classes_need_extend']
-        self.classes_have_no_parents = opts['classes_have_no_parents'].split(' ')
-        self.base_classes_to_skip = opts['base_classes_to_skip'].split(' ')
-        self.abstract_classes = opts['abstract_classes'].split(' ')
+        self.classes_have_no_parents = opts['classes_have_no_parents'].split()
+        self.base_classes_to_skip = opts['base_classes_to_skip'].split()
+        self.abstract_classes = opts['abstract_classes'].split()
         self.clang_args = opts['clang_args']
         self.target = opts['target']
         self.remove_prefix = opts['remove_prefix']
@@ -1013,6 +1014,8 @@ class Generator(object):
         self.win32_clang_flags = opts['win32_clang_flags']
 
         extend_clang_args = []
+
+        self._check_headers()
 
         for clang_arg in self.clang_args:
             if not os.path.exists(clang_arg.replace("-I","")):
@@ -1246,12 +1249,28 @@ class Generator(object):
 
 
     def _pretty_print(self, diagnostics):
+        errors=[]
+        for idx, d in enumerate(diagnostics):
+            if d.severity > 2:
+                errors.append(d)
+        if len(errors) == 0:
+            return
         print("====\nErrors in parsing headers:")
         severities=['Ignored', 'Note', 'Warning', 'Error', 'Fatal']
-        for idx, d in enumerate(diagnostics):
+        for idx, d in enumerate(errors):
             print "%s. <severity = %s,\n    location = %r,\n    details = %r>" % (
                 idx+1, severities[d.severity], d.location, d.spelling)
         print("====\n")
+
+    def _check_headers(self):
+        headers = self.headers
+        self.headers = []
+        for header in headers:
+            if os.path.exists(header):
+                self.headers.append(header)
+            else:
+                print('*** header: {0} does not exist'.format(header))
+        print('*** available headers:', self.headers)
 
     def _parse_headers(self):
         for header in self.headers:
@@ -1486,6 +1505,9 @@ def main():
     userconfig.read('userconf.ini')
     print 'Using userconfig \n ', userconfig.items('DEFAULT')
 
+    clang_lib_path = os.path.join(userconfig.get('DEFAULT', 'cxxgeneratordir'), 'libclang')
+    cindex.Config.set_library_path(clang_lib_path);
+
     config = ConfigParser.SafeConfigParser()
     config.read(args[0])
 
@@ -1541,6 +1563,7 @@ def main():
                 'clang_args': (config.get(s, 'extra_arguments', 0, dict(userconfig.items('DEFAULT'))) or "").split(),
                 'target': os.path.join(workingdir, "targets", t),
                 'outdir': outdir,
+                'search_path': os.path.abspath(os.path.join(userconfig.get('DEFAULT', 'cocosdir'), 'cocos')),
                 'remove_prefix': config.get(s, 'remove_prefix'),
                 'target_ns': config.get(s, 'target_namespace'),
                 'cpp_ns': config.get(s, 'cpp_namespace').split(' ') if config.has_option(s, 'cpp_namespace') else None,
